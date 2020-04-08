@@ -16,8 +16,6 @@ if(isset($logear)){
     alert("Los datos no son validos");
     redir("./");
   }
-
-
 }
 
 
