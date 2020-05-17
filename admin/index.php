@@ -110,7 +110,7 @@ if(!isset($_SESSION['id'])){
 
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
-
+  <!-- prueba-->
     <header class="main-header">
       <!-- Logo -->
       <a href="index2.html" class="logo">
