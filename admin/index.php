@@ -177,7 +177,7 @@ if(!isset($_SESSION['id'])){
           </li>
 
           <li>
-            <a href="./">
+            <a href="./?p=agregar_tpasantia">
               <i class="fa fa-th"></i> <span>Trabajo de pasantia</span>
             </a>
           </li>

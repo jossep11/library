@@ -9,11 +9,11 @@ if(isset($enviar)){
 	$imagen = "";
 	$descargable = "";
 
-	$x = $mysqli->query("SELECT * FROM tgrado WHERE cedula = '$cedula' and name='$name'");
+	$x = $mysqli->query("SELECT * FROM tpasantia WHERE cedula = '$cedula' and name='$name'");
 
 	if(mysqli_num_rows($x)>0){
 		alert("Trabajo ya registrado");
-		redir("?p=agregar_tgrado");
+		redir("?p=agregar_tpasantia");
 		die();
 	}
 
@@ -21,7 +21,7 @@ if(isset($enviar)){
 
 	if(is_uploaded_file($_FILES['imagen']['tmp_name'])){
 		$imagen = $name.rand(0,1000).".png";
-		move_uploaded_file($_FILES['imagen']['tmp_name'], "../igrado/".$imagen);
+		move_uploaded_file($_FILES['imagen']['tmp_name'], "../ipasantia/".$imagen);
 	}
 
 	if(is_uploaded_file($_FILES['descargable']['tmp_name'])){
@@ -29,14 +29,14 @@ if(isset($enviar)){
 		move_uploaded_file($_FILES['descargable']['tmp_name'], "../descargable/".$descargable);
 	}
 
-	$mysqli->query("INSERT INTO tgrado (name, cedula, id_categoria,imagen,descargable) VALUES ('$name','$cedula','$categoria','$imagen','$descargable')");
+	$mysqli->query("INSERT INTO tpasantia (name, cedula, id_categoria,imagen,descargable) VALUES ('$name','$cedula','$categoria','$imagen','$descargable')");
 	alert("Producto agregado");
-	redir("?p=agregar_tgrado");
+	redir("?p=agregar_tpasantia");
 }
 
 if(isset($eliminar)){
-	$mysqli->query("DELETE FROM tgrado WHERE id = '$eliminar'");
-	redir("?p=agregar_tgrado");
+	$mysqli->query("DELETE FROM tpasantia WHERE id = '$eliminar'");
+	redir("?p=agregar_tpasantia");
 }
 
 
@@ -108,7 +108,7 @@ if(isset($eliminar)){
 	</tr>
 
 	<?php
-		$prod = $mysqli->query("SELECT * FROM tgrado ORDER BY id DESC");
+		$prod = $mysqli->query("SELECT * FROM tpasantia ORDER BY id DESC");
 		while($rp=mysqli_fetch_array($prod)){
 
 
@@ -142,15 +142,15 @@ if(isset($eliminar)){
 
 					<td><?=$name?></td>
 
-					<td><img src="../igrado/<?=$rp['imagen']?>" class="imagen_carro"/></td>
+					<td><img src="../ipasantia/<?=$rp['imagen']?>" class="imagen_carro"/></td>
 
 
 					<td><?=$categoria?></td>
 					<td>
 						
-						<a style="color:#08f" href="?p=modificar_tgrado&id=<?=$rp['id']?>"><i class="fa fa-edit"></i></a>
+						<a style="color:#08f" href="?p=modificar_tpasantia&id=<?=$rp['id']?>"><i class="fa fa-edit"></i></a>
 						&nbsp;
-						<a style="color:#08f" href="?p=agregar_tgrado&eliminar=<?=$rp['id']?>"><i class="fa fa-times"></i></a>
+						<a style="color:#08f" href="?p=agregar_tpasantia&eliminar=<?=$rp['id']?>"><i class="fa fa-times"></i></a>
 
 					</td>
 				</tr>
