@@ -7,9 +7,7 @@ if(isset($enviar)){
 	$cedula = clear($cedula);
 	//$oferta = clear($oferta);
 	$categoria=clear($categoria);
-	
 
-	
 
 
 	$mysqli->query("INSERT INTO autores (FullName, cedula, id_categoria) VALUES ('$name','$cedula','$categoria')");

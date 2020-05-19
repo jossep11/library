@@ -2,19 +2,22 @@
 check_admin();
 
 if(isset($enviar)){
+	
 	$categoria = clear($categoria);
-
+	
 	$s = $mysqli->query("SELECT * FROM categorias WHERE categoria = '$categoria'");
+
 
 	if(mysqli_num_rows($s)>0){
 		alert("Ya esta categoria esta agregada a la base de datos");
 		redir("");
 	}else{
 		$mysqli->query("INSERT INTO categorias (categoria) VALUES ('$categoria')");
+		
 		alert("Categoria Agregada");
 		redir("");
 	}
-
+	
 }
 
 if(isset($eliminar)){
@@ -29,6 +32,7 @@ if(isset($eliminar)){
 <h1>Agregar Categoria</h1><br><br>
 
 <form method="post" action="">
+	
 	<div class="form-group">
 		<input type="text" class="form-control" name="categoria" placeholder="Categoria"/>
 	</div>
@@ -48,7 +52,7 @@ if(isset($eliminar)){
 	</tr>
 
 	<?php
-	$q = $mysqli->query("SELECT * FROM categorias ORDER BY categoria ASC");
+	$q = $mysqli->query("SELECT * FROM categorias ORDER BY id ASC");
 	while($r=mysqli_fetch_array($q)){
 		?>
 			<tr>

@@ -44,7 +44,7 @@ if(isset($eliminar)){
 
 ?>
 
-<h1>Agregar Producto</h1><br><br>
+<h1>Agregar Trabajo de Pasantia</h1><br><br>
 
 <form method="post" action="" enctype="multipart/form-data">
 	<div class="form-group">

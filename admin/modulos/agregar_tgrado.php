@@ -10,15 +10,9 @@ if(isset($enviar)){
 	$descargable = "";
 
 	$x = $mysqli->query("SELECT * FROM tgrado WHERE cedula = '$cedula' and name='$name'");
+	$autores = $mysqli->query("SELECT * FROM autores WHERE cedula= '$cedula'");
 
-	if(mysqli_num_rows($x)>0){
-		alert("Trabajo ya registrado");
-		redir("?p=agregar_tgrado");
-		die();
-	}
-
-
-
+	
 	if(is_uploaded_file($_FILES['imagen']['tmp_name'])){
 		$imagen = $name.rand(0,1000).".png";
 		move_uploaded_file($_FILES['imagen']['tmp_name'], "../igrado/".$imagen);
@@ -29,9 +23,23 @@ if(isset($enviar)){
 		move_uploaded_file($_FILES['descargable']['tmp_name'], "../descargable/".$descargable);
 	}
 
-	$mysqli->query("INSERT INTO tgrado (name, cedula, id_categoria,imagen,descargable) VALUES ('$name','$cedula','$categoria','$imagen','$descargable')");
-	alert("Producto agregado");
-	redir("?p=agregar_tgrado");
+	if(mysqli_num_rows($x)>0){
+		alert("Trabajo ya registrado");
+		redir("?p=agregar_tgrado");
+		die();
+		
+	}elseif(mysqli_num_rows($autores)<=0){
+		alert("No existe autor");
+		redir("?p=agregar_tgrado");
+	}else
+	{
+		$mysqli->query("INSERT INTO tgrado (name, cedula, id_categoria,imagen,descargable) VALUES ('$name','$cedula','$categoria','$imagen','$descargable')");
+		alert("Producto agregado");
+		redir("?p=agregar_tgrado");
+	}
+
+
+	
 }
 
 if(isset($eliminar)){
@@ -44,9 +52,9 @@ if(isset($eliminar)){
 
 ?>
 
-<h1>Agregar Producto</h1><br><br>
+<h1>Agregar Trabajo de Grado</h1><br><br>
 
-<form method="post" action="" enctype="multipart/form-data">
+<+ method="post" action="" enctype="multipart/form-data">
 	<div class="form-group">
 		<input type="text" class="form-control" name="name" placeholder="Titulo"/>
 	</div>

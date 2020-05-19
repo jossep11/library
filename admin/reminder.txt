@@ -1,4 +1,19 @@
 -Registro de tesis y trabajos de grados: La cedula debe coinsidir con la de algun autor registrado
-en la seccion de autores (Aun por realizar)
+en la seccion de autores (Realizado)
 
-agregar que si al ingresar la cedula el usuario no existe entonces no se guarde ningun trabajo 
+-*agregar que si al ingresar la cedula el usuario no existe entonces no se guarde ningun trabajo *
+-Solucionado solo falta inplementarlo en tpasantia
+
+-Parte de Categoria:
+acomodar el id, hacer una funcion que revise en la base de datos a partir de que numero va 
+y hacer un autoincrementador a partir del numero que este registrado en la base de datos
+(prioridad)
+
+-Parte de autores, agregar un buscador o un filtrador tanto por cedula, carrera y nombre
+carrera puede ver seleccionable osea una barra desplegable ya que no son muchas las otras si hay que hacerle 
+la opcion de busqueda y eso hacerlo en una ventana que aparezca al momento de darle a un boton de ver los registros
+
+-parte de Pasantia y Trabajo de grado:
+agregar un botno donde me muestre otra ventana y me muestre los registrados que tengo y me permita filtrar por carrera
+cedula y titulo
+
