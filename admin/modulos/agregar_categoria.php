@@ -1,24 +1,20 @@
 <?php
 check_admin();
 
+
 if(isset($enviar)){
 	
 	$categoria = clear($categoria);
-	
-	$s = $mysqli->query("SELECT * FROM categorias WHERE categoria = '$categoria'");
-
-
-	if(mysqli_num_rows($s)>0){
-		alert("Ya esta categoria esta agregada a la base de datos");
-		redir("");
-	}else{
 		$mysqli->query("INSERT INTO categorias (categoria) VALUES ('$categoria')");
-		
-		alert("Categoria Agregada");
-		redir("");
-	}
+		alert("Producto agregado");
+		redir("?p=agregar_categoria");
 	
+
+
+	
+
 }
+
 
 if(isset($eliminar)){
 	$eliminar = clear($eliminar);
@@ -46,7 +42,7 @@ if(isset($eliminar)){
 
 <table class="table table-striped">
 	<tr>
-		<th>ID</th>
+	
 		<th>Categoria</th>
 		<th>Acciones</th>
 	</tr>
@@ -56,7 +52,7 @@ if(isset($eliminar)){
 	while($r=mysqli_fetch_array($q)){
 		?>
 			<tr>
-				<td><?=$r['id']?></td>
+			<!--<td><?=$r['id']?></td>-->
 				<td><?=$r['categoria']?>
 				<td>
 					<a  style="color:#08f" href="?p=agregar_categoria&eliminar=<?=$r['id']?>"><i class="fa fa-times"></i></a>

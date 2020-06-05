@@ -7,12 +7,21 @@ if(isset($enviar)){
 	$cedula = clear($cedula);
 	//$oferta = clear($oferta);
 	$categoria=clear($categoria);
+	
+	$consult=$mysqli->query("SELECT * FROm autores where cedula='$cedula' and id_categoria='$categoria'");
 
-
+	if(mysqli_num_rows($consult)>0){
+		alert("Usuario ya existe");
+		redir("?p=autores");
+		die();
+		
+	}
 
 	$mysqli->query("INSERT INTO autores (FullName, cedula, id_categoria) VALUES ('$name','$cedula','$categoria')");
 	alert("Producto agregado");
 	redir("?p=autores");
+
+
 }
 
 

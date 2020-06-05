@@ -54,7 +54,7 @@ if(isset($eliminar)){
 
 <h1>Agregar Trabajo de Grado</h1><br><br>
 
-<+ method="post" action="" enctype="multipart/form-data">
+<form method="post" action="" enctype="multipart/form-data">
 	<div class="form-group">
 		<input type="text" class="form-control" name="name" placeholder="Titulo"/>
 	</div>
