@@ -18,7 +18,10 @@ function check_admin(){
 	if(!isset($_SESSION['id'])){
 		redir("./");
 	}
+	
+
 }
+
 
 function redir($var){
 	?>

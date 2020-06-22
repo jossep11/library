@@ -16,6 +16,7 @@ if(isset($logear)){
     alert("Los datos no son validos");
     redir("./");
   }
+  
 }
 
 
@@ -53,6 +54,7 @@ if(!isset($_SESSION['id'])){
       </div>
     </form>
   </center>
+
 </body>
 
 </html>
@@ -109,6 +111,33 @@ if(!isset($_SESSION['id'])){
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
+
+<script type="text/javascript">
+var IDLE_TIMEOUT = 300; //seconds
+var _idleSecondsCounter = 0;
+document.onclick = function() {
+    _idleSecondsCounter = 0;
+};
+document.onmousemove = function() {
+    _idleSecondsCounter = 0;
+};
+document.onkeypress = function() {
+    _idleSecondsCounter = 0;
+};
+window.setInterval(CheckIdleTime, 1000);
+
+function CheckIdleTime() {
+    _idleSecondsCounter++;
+    var oPanel = document.getElementById("SecondsUntilExpire");
+    if (oPanel)
+        oPanel.innerHTML = (IDLE_TIMEOUT - _idleSecondsCounter) + "";
+    if (_idleSecondsCounter >= IDLE_TIMEOUT) {
+        alert("Time expired!");
+        document.location.href = "?p=logout";
+    }
+}
+</script>
+
   <div class="wrapper">
   <!-- prueba-->
     <header class="main-header">
@@ -239,6 +268,10 @@ if(!isset($_SESSION['id'])){
               </div>
               <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
+
+            <div>
+              <a href="?p=logout" class="btn btn-primary">Salir</a>
+            </div>
           </div>
           <!-- ./col -->
           <!-- ./col -->
@@ -271,6 +304,7 @@ if(!isset($_SESSION['id'])){
       ?>
   </div>
   <?php
+
     }
     ?>
 
